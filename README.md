@@ -1,43 +1,70 @@
-# DjangoTioGui
- vamo caralho
 
+# Projeto CRUD django
+
+ 
+- [ ] criar o ambiente virtual (venv)
+- [ ] subpasta chamada src
+- [ ] pip install django
+- [ ] python hello_world 
+
+***
+
+```bash
 mkdir src
-django-admin startproject app src
-
+django-admin startproject src .
 cd src
-
 python manage.py runserver
+```
 
-python manage.py migrate # popula o banco de dados
+## django
 
-manage.py --help 
+#### fluxo do django
 
-createsuperuser
+[django request workflow](https://nitinnain.com/djangos-request-response-cycle/)
 
-localhost/admin
+#### principais configurações
 
-cria um app (pequena parte do sistema)
-manage.py startapp core 
 
-urls principais
+#### principais comando django admin:
+
+para usar o djangoadmin no projeto criado usamos o `manage.py`
+
+- **createsuperuser** : adiciona usuario com permissão de staff (modelo padrão do django)
+- **makemigrate**: cria o script para mudar o banco baseado nos modelos criados
+- **migrate**: rodar depois do makemigrate para efetivar as mudanças no banco
+- **runserver**: roda um servidor de testes
+- **startapp {name}**: cria a estrutura de um app
+- **startprojet {name} {path}**: cria a estrutura de um projeto
+
+
+#### Apps
+apps são como subprojetos, mais facil de trabalhar separadamente em cada um
+
+
+#### Passos
+
+- [ ] startar o projeto
+
+- [ ] criar o app (core)
+
+- [ ] adicionar a url para o app (core)
+``` python
 
 django urls import include
-url core/ include core.urls
 
-touch core/urls.py
-urls do core aninhadas  (
-                            /core/adsda
-                            /core/lbalblas
-                        )
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('core.urls')) #direciona a url / para o aninhamento de urls do core .urls
+]
+```
 
-core.urls
+- [ ] criar o arquivo urls.py dentro do app (core)
+
+- [ ] adicionar a primeira url (copiar a estrutura)
 
 urlpatterns = [
     path('', home)
 ]
-
-
-django request [workflow](https://nitinnain.com/djangos-request-response-cycle/)
 
 ## Views
 
